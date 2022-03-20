@@ -22,6 +22,7 @@ router.param("item", function(req, res, next, slug) {
     .catch(next);
 });
 
+
 router.param("comment", function(req, res, next, id) {
   Comment.findById(id)
     .then(function(comment) {
