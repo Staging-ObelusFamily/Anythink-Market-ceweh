@@ -22,6 +22,7 @@ router.param("item", function(req, res, next, slug) {
     .catch(next);
 });
 
+
 router.param("comment", function(req, res, next, id) {
   Comment.findById(id)
     .then(function(comment) {
@@ -51,6 +52,13 @@ router.get("/", auth.optional, function(req, res, next) {
 
   if (typeof req.query.tag !== "undefined") {
     query.tagList = { $in: [req.query.tag] };
+  }
+
+  console.log('>>> req.query is:', req.query)
+  if (typeof req.query.title !== "undefined") {
+      console.log('>>> title is not undefined!')
+    const regex = new RegExp(req.query.title, 'i')
+    query.title = { $regex: regex };
   }
 
   Promise.all([
