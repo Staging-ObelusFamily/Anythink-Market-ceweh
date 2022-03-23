@@ -6,6 +6,8 @@ var User = mongoose.model("User");
 var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
 
+
+
 // Preload item objects on routes with ':item'
 router.param("item", function(req, res, next, slug) {
   Item.findOne({ slug: slug })
@@ -51,6 +53,11 @@ router.get("/", auth.optional, function(req, res, next) {
 
   if (typeof req.query.tag !== "undefined") {
     query.tagList = { $in: [req.query.tag] };
+  }
+
+  if (typeof req.query.title !== "undefined") {
+    const regex = new RegExp(req.query.title, 'i')
+    query.title = { $regex: regex };
   }
 
   Promise.all([
