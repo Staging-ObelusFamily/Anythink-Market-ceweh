@@ -9,7 +9,12 @@ const Banner = () => {
         <div>
           <span>A place to get </span>
           <form>
-            <input type="text" placeholder="what is there you truly desire?" name="term" className="search-box" />
+            <input
+              type="text"
+              placeholder="what is there you truly desire?"
+              name="term"
+              className="search-box"
+            />
           </form>
           <span> the cool stuff.</span>
         </div>
