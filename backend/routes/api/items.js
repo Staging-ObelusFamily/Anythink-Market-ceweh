@@ -54,6 +54,14 @@ router.get("/", auth.optional, function(req, res, next) {
   if (typeof req.query.tag !== "undefined") {
     query.tagList = { $in: [req.query.tag] };
   }
+  
+  console.log('>>>>> inside the API');
+  console.log('>>>>> inside the API, req.query is:', req.query);
+  
+   if (typeof req.query.title !== "undefined") {
+    const regex = new RegExp(req.query.title, 'i')
+    query.title = { $regex: regex };
+  }
 
   if (typeof req.query.title !== "undefined") {
     const regex = new RegExp(req.query.title, 'i')
