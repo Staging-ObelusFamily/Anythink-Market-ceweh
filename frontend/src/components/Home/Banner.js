@@ -10,7 +10,7 @@ const Banner = () => {
         <img src={logo} alt="banner" />
         <div>
           <span
-            className="get-part"
+            id="get-part"
             onClick={() => {
               setSearchVisible(true);
             }}
