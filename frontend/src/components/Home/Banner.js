@@ -22,7 +22,7 @@ const Banner = () => {
               type="text"
               placeholder="what is there you truly desire?"
               name="term"
-              className="search-box"
+              id="search-box"
             />
           </form>
           <span> the cool stuff.</span>
