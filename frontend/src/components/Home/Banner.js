@@ -12,7 +12,6 @@ const Banner = (props) => {
       agent.Items.byTitle(event.target.value)
     );
   };
-  
 
   return (
     <div className="banner text-white">
