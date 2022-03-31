@@ -21,7 +21,7 @@ jobs:
 
       - name: Wilco checks
         id: Wilco
-        uses: trywilco/actions@lior
+        uses: trywilco/actions@limor-machine
         with:
           owner: ${{ github.repository_owner }}
   Lint:
