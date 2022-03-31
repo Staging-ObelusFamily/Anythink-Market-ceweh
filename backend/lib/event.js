@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const WILCO_ID = process.env.WILCO_ID || fs.readFileSync('../.wilco', 'utf8')
 
-const baseURL = 'http://liorwilco.ngrok.io';
+const baseURL = 'http://wilco-engine.herokuapp.com';
 const axios = axiosLib.create({
   baseURL: baseURL,
   headers: {
@@ -11,9 +11,19 @@ const axios = axiosLib.create({
   },
 });
 
-async function sendEvent(event, metadata) {
-  const result = await axios.post(`/users/${WILCO_ID}/event`, JSON.stringify({ event, metadata }));
-  return result.data;
+async function sendEvent(event, metadata, async=true) {
+  const sendEventCall = async function() { 
+    axios.post(`/users/${WILCO_ID}/event`, JSON.stringify({ event, metadata })); 
+  }
+
+  if (async) {
+    const result = await sendEventCall();
+    return result.data;
+  }
+  else {
+    sendEventCall();
+  }
+  
 }
 
 module.exports = {

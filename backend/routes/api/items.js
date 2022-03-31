@@ -156,7 +156,7 @@ router.post("/", auth.required, function(req, res, next) {
       item.seller = user;
 
       return item.save().then(function() {
-        sendEvent('item_created', { item: req.body.item })
+        sendEvent('item_created', { item: req.body.item }, false)
         return res.json({ item: item.toJSONFor(user) });
       });
     })
